@@ -46,6 +46,20 @@ extracted_data$Activity <- as.factor(extracted_data$Activity)
 # labels
 names(extracted_data) 
 
+names(extracted_data)<-gsub("Acc", "Accelerometer", names(extracted_data))
+names(extracted_data)<-gsub("Gyro", "Gyroscope", names(extracted_data))
+names(extracted_data)<-gsub("Freq", "Frequency", names(extracted_data))
+names(extracted_data)<-gsub("BodyBody", "Body", names(extracted_data))
+names(extracted_data)<-gsub("Mag", "Magnitude", names(extracted_data))
+names(extracted_data)<-gsub("^t", "Time", names(extracted_data))
+names(extracted_data)<-gsub("^f", "Frequency", names(extracted_data))
+names(extracted_data)<-gsub("tBody", "TimeBody", names(extracted_data))
+names(extracted_data)<-gsub("-mean()", "Mean", names(extracted_data), ignore.case = TRUE)
+names(extracted_data)<-gsub("-std()", "StandardDeviation", names(extracted_data), ignore.case = TRUE)
+names(extracted_data)<-gsub("-freq()", "Frequency", names(extracted_data), ignore.case = TRUE)
+names(extracted_data)<-gsub("angle", "Angle", names(extracted_data))
+names(extracted_data)<-gsub("gravity", "Gravity", names(extracted_data))
+
 # tidy dataset w/ the average of each variable for each activity and subject
 extracted_data$Subject <- as.factor(extracted_data$Subject)
 extracted_data <- data.table(extracted_data)
